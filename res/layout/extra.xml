@@ -39,6 +39,7 @@
             android:id="@+id/results"
             android:layout_width="fill_parent"
             android:layout_height="200dp"
+            android:gravity="top"
             android:hint="results"
             android:textSize="18sp"
             android:layout_x="0dp"

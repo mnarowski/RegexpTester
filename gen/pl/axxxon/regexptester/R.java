@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package pl.axxxon;
+package pl.axxxon.regexptester;
 
 public final class R {
     public static final class attr {
