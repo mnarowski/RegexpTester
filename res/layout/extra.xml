@@ -1,48 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AbsoluteLayout
-	android:id="@+id/widget0"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	xmlns:android="http://schemas.android.com/apk/res/android">
-<EditText
-	android:id="@+id/edit1"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:hint="regexp"
-	android:textSize="18sp"
-	android:layout_x="0dp"
-	android:layout_y="13dp" />
-<EditText
-	android:id="@+id/edit2"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:hint="test"
-	android:textSize="18sp"
-	android:layout_x="0dp"
-	android:layout_y="75dp" />
-<TableRow
-	android:id="@+id/tablerow"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:orientation="horizontal"
-	android:layout_x="0dp"
-	android:layout_y="140dp">
-<Button
-	android:id="@+id/clear"
-	android:layout_width="96dp"
-	android:layout_height="wrap_content"
-	android:text="Clear"
-	android:layout_x="4dp"
-	android:layout_y="174dp" />
-<Button
-	android:id="@+id/search"
-	android:layout_width="96dp"
-	android:layout_height="wrap_content"
-	android:layout_marginLeft="10dp"
-	android:text="Search"
-	android:layout_x="220dp"
-	android:layout_y="174dp"
-	android:layout_span="2"
-	android:layout_gravity="top" />
-</TableRow>
+        android:id="@+id/main_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText
+            android:id="@+id/edit1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="regexp"
+            android:textSize="18sp"
+            android:layout_x="0dp"
+            android:layout_y="13dp"/>
+    <EditText
+            android:id="@+id/edit2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="test"
+            android:textSize="18sp"
+            android:layout_x="0dp"
+            android:layout_y="75dp"/>
+    <Button
+            android:id="@+id/clear"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:text="Clear"
+            android:layout_x="5dp"
+            android:layout_y="129dp"/>
+    <Button
+            android:id="@+id/search"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Search"
+            android:layout_x="220dp"
+            android:layout_y="130dp"/>
+    <EditText
+            android:id="@+id/results"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:hint="results"
+            android:textSize="18sp"
+            android:layout_x="0dp"
+            android:layout_y="184dp"/>
 </AbsoluteLayout>
