@@ -15,6 +15,9 @@ public class MainActivity extends Activity {
     private static final String APP_TAG = "RegexpTester";
     private static final String PRE_MATCHES = "Found %d matches,\n";
     private static final String MATCH_TEMPLATE = "%s - from %d to %d\n";
+    private EditText mRegexp = null;
+    private EditText mTest = null;
+    private EditText mResult = null;
 
     /**
      * Called when the activity is first created.
@@ -26,6 +29,9 @@ public class MainActivity extends Activity {
         setContentView(R.layout.extra);
         Log.d(APP_TAG, "Started");
 
+        mRegexp = (EditText) findViewById(R.id.edit1);
+        mTest = (EditText) findViewById(R.id.edit2);
+        mResult = (EditText) findViewById(R.id.results);
         bindActions();
     }
 
@@ -49,21 +55,16 @@ public class MainActivity extends Activity {
     }
 
     public void clickClear() {
-        EditText regexp = (EditText) findViewById(R.id.edit1);
-        EditText test = (EditText) findViewById(R.id.edit2);
-        EditText results = (EditText) findViewById(R.id.results);
-        regexp.setText("", TextView.BufferType.NORMAL);
-        test.setText("", TextView.BufferType.NORMAL);
-        results.setText("", TextView.BufferType.NORMAL);
+        mRegexp.setText("", TextView.BufferType.NORMAL);
+        mTest.setText("", TextView.BufferType.NORMAL);
+        mResult.setText("", TextView.BufferType.NORMAL);
         Log.d(APP_TAG, "Cleared");
     }
 
     public void runTest() {
         Log.d(APP_TAG, "runned");
-        EditText regexp = (EditText) findViewById(R.id.edit1);
-        EditText test = (EditText) findViewById(R.id.edit2);
-        String expression = regexp.getText().toString();
-        String testString = test.getText().toString();
+        String expression = mRegexp.getText().toString();
+        String testString = mTest.getText().toString();
         Pattern pattern = Pattern.compile(expression);
         Matcher matcher = pattern.matcher(testString);
         StringBuilder sb = new StringBuilder();
@@ -75,8 +76,7 @@ public class MainActivity extends Activity {
 
         String resultString = String.format(PRE_MATCHES, count);
         resultString += sb.toString();
-        EditText results = (EditText) findViewById(R.id.results);
-        results.setText(resultString, TextView.BufferType.NORMAL);
+        mResult.setText(resultString, TextView.BufferType.NORMAL);
 
     }
 }
