@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 public class MainActivity extends Activity {
     private static final String APP_TAG = "RegexpTester";
@@ -48,7 +49,13 @@ public class MainActivity extends Activity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                runTest();
+
+                try {
+                    runTest();
+                } catch (Exception e) {
+                    mResult.setText("Wrong regexp", TextView.BufferType.NORMAL);
+                    Log.e(APP_TAG, e.getMessage());
+                }
             }
         });
         Log.d(APP_TAG, "Binded");
@@ -61,12 +68,18 @@ public class MainActivity extends Activity {
         Log.d(APP_TAG, "Cleared");
     }
 
-    public void runTest() {
+    public void runTest() throws Exception {
         Log.d(APP_TAG, "runned");
         String expression = mRegexp.getText().toString();
         String testString = mTest.getText().toString();
-        Pattern pattern = Pattern.compile(expression);
+        Pattern pattern = null;
+        try {
+            pattern = Pattern.compile(expression);
+        } catch (PatternSyntaxException e) {
+            mResult.setText("Wrong regexp", TextView.BufferType.NORMAL);
+        }
         Matcher matcher = pattern.matcher(testString);
+
         StringBuilder sb = new StringBuilder();
         int count = 0;
         while (matcher.find()) {
