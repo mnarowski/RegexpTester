@@ -26,7 +26,8 @@
             android:layout_height="wrap_content"
             android:text="Clear"
             android:layout_x="5dp"
-            android:layout_y="129dp"/>
+            android:layout_y="129dp"
+            android:onClick="clickClear"/>
     <Button
             android:id="@+id/search"
             android:layout_width="96dp"
@@ -34,7 +35,9 @@
             android:layout_marginLeft="10dp"
             android:text="Search"
             android:layout_x="220dp"
-            android:layout_y="130dp"/>
+            android:layout_y="130dp"
+            android:onClick="runTest"
+            />
     <EditText
             android:id="@+id/results"
             android:layout_width="fill_parent"

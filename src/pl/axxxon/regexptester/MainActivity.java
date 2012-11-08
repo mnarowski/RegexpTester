@@ -16,9 +16,9 @@ public class MainActivity extends Activity {
     private static final String APP_TAG = "RegexpTester";
     private static final String PRE_MATCHES = "Found %d matches,\n";
     private static final String MATCH_TEMPLATE = "%s - from %d to %d\n";
-    private EditText mRegexp = null;
-    private EditText mTest = null;
-    private EditText mResult = null;
+    private EditText mRegexp;
+    private EditText mTest;
+    private EditText mResult;
 
     /**
      * Called when the activity is first created.
@@ -28,47 +28,22 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.extra);
-        Log.d(APP_TAG, "Started");
-
         mRegexp = (EditText) findViewById(R.id.edit1);
         mTest = (EditText) findViewById(R.id.edit2);
         mResult = (EditText) findViewById(R.id.results);
-        bindActions();
+
+        Log.d(APP_TAG, "Started");
+
     }
 
-    private void bindActions() {
-        View clear = findViewById(R.id.clear);
-        clear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickClear();
-            }
-        });
-
-        View search = findViewById(R.id.search);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                try {
-                    runTest();
-                } catch (Exception e) {
-                    mResult.setText("Wrong regexp", TextView.BufferType.NORMAL);
-                    Log.e(APP_TAG, e.getMessage());
-                }
-            }
-        });
-        Log.d(APP_TAG, "Binded");
-    }
-
-    public void clickClear() {
+    public void clickClear(View v) {
         mRegexp.setText("", TextView.BufferType.NORMAL);
         mTest.setText("", TextView.BufferType.NORMAL);
         mResult.setText("", TextView.BufferType.NORMAL);
         Log.d(APP_TAG, "Cleared");
     }
 
-    public void runTest() throws Exception {
+    public void runTest(View v) throws Exception {
         Log.d(APP_TAG, "runned");
         String expression = mRegexp.getText().toString();
         String testString = mTest.getText().toString();
@@ -77,7 +52,9 @@ public class MainActivity extends Activity {
             pattern = Pattern.compile(expression);
         } catch (PatternSyntaxException e) {
             mResult.setText("Wrong regexp", TextView.BufferType.NORMAL);
+            return;
         }
+
         Matcher matcher = pattern.matcher(testString);
 
         StringBuilder sb = new StringBuilder();
