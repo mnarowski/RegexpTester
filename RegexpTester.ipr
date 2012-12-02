@@ -32,6 +32,7 @@
   </component>
   <component name="EclipseCodeFormatter">
     <option name="defaultSettings" value="true" />
+    <option name="formatter" value="ECLIPSE" />
     <option name="id" value="1351886438026" />
     <option name="name" value="default" />
   </component>
